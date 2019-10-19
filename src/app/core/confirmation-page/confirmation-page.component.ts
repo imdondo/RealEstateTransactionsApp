@@ -1,4 +1,4 @@
-import { BeneficiariesService } from './../../services/beneficiaries.service';
+import { TransactionsService } from './../../services/transactions.service';
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 
@@ -9,7 +9,7 @@ import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 })
 export class ConfirmationPageComponent implements OnInit {
   constructor(
-    private beneficiariesService: BeneficiariesService,
+    private transactionsService: TransactionsService,
     private snackBar: MatSnackBar,
     public confirmDialogRef: MatDialogRef<ConfirmationPageComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any

@@ -1,43 +1,43 @@
-import { BeneficiariesService } from './../services/beneficiaries.service';
+import { TransactionsService } from './../services/transactions.service';
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 
 @Component({
-  selector: 'app-beneficiary-form',
-  templateUrl: './beneficiary-form.component.html',
-  styleUrls: ['./beneficiary-form.component.scss']
+  selector: 'app-transaction-form',
+  templateUrl: './transaction-form.component.html',
+  styleUrls: ['./transaction-form.component.scss']
 })
-export class BeneficiaryFormComponent implements OnInit {
-  beneficiaryForm: FormGroup;
+export class TransactionFormComponent implements OnInit {
+  transactionForm: FormGroup;
   constructor(
     private fb: FormBuilder,
-    private beneficiariesService: BeneficiariesService,
+    private TransactionsService: TransactionsService,
     private snackBar: MatSnackBar,
-    public formDialogRef: MatDialogRef<BeneficiaryFormComponent>,
+    public formDialogRef: MatDialogRef<TransactionFormComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
     ) { }
 
   ngOnInit() {
     this.initForm();
-    this.beneficiaryForm.setValue({
-      beneficiaryName: this.data.beneficiaryName,
-      accountNumber: this.data.accountNumber,
-      bankName: this.data.bankName
+    this.transactionForm.setValue({
+      street: this.data.street,
+      city: this.data.city,
+      state: this.data.state
     })
   }
 
   initForm() {
-    this.beneficiaryForm = this.fb.group({
-      beneficiaryName: ['', Validators.required],
-      accountNumber: ['', Validators.required],
-      bankName: ['', Validators.required],
+    this.transactionForm = this.fb.group({
+      street: ['', Validators.required],
+      city: ['', Validators.required],
+      state: ['', Validators.required],
     })
   }
 
   submit() {
     if(this.data.id === undefined) {
-      this.beneficiariesService.addBeneficiary(this.beneficiaryForm.value).subscribe((res: any) => {
+      this.TransactionsService.addTransaction(this.transactionForm.value).subscribe((res: any) => {
         this.formDialogRef.close();
         this.snackBar.open(res.message, '', {
           duration: 3000
@@ -50,7 +50,7 @@ export class BeneficiaryFormComponent implements OnInit {
         })
       });
     } else {
-      this.beneficiariesService.updateBeneficiary(this.data.id, this.beneficiaryForm.value).subscribe((res: any) => {
+      this.TransactionsService.updateTransaction(this.data.id, this.transactionForm.value).subscribe((res: any) => {
         this.formDialogRef.close();
         this.snackBar.open(res.message, '', {
           duration: 3000
