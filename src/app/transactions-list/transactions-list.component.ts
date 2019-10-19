@@ -1,4 +1,4 @@
-import { TransactionInputModel } from './../models/transactionInput.model';
+import { TransactionInputModel } from './../models/TransactionInput.model';
 import { Component, OnInit, ChangeDetectorRef, ViewChild } from '@angular/core';
 import { MatDialog, MatTable } from '@angular/material';
 
@@ -21,6 +21,7 @@ export class TransactionsListComponent implements OnInit {
   @ViewChild(MatTable) table: MatTable<any>;
 
   constructor(
+    // tslint:disable-next-line:no-shadowed-variable
     private TransactionService: TransactionService,
     public dialog: MatDialog,
     private changeDetectorRefs: ChangeDetectorRef

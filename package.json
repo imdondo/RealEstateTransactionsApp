@@ -1,5 +1,5 @@
 {
-  "name": "beneficiaries-app",
+  "name": "transactions-app",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",

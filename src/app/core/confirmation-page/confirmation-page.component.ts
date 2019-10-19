@@ -1,4 +1,4 @@
-import { TransactionsService } from './../../services/transactions.service';
+import { TransactionService } from './../../services/transactions.service';
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 
@@ -9,7 +9,7 @@ import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 })
 export class ConfirmationPageComponent implements OnInit {
   constructor(
-    private transactionsService: TransactionsService,
+    private transactionsService: TransactionService,
     private snackBar: MatSnackBar,
     public confirmDialogRef: MatDialogRef<ConfirmationPageComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
@@ -18,7 +18,7 @@ export class ConfirmationPageComponent implements OnInit {
   ngOnInit() {}
 
   removeBeneficiary() {
-    this.beneficiariesService.removeBeneficiary(this.data.id).subscribe(
+    this.transactionsService.removeTransaction(this.data.id).subscribe(
       (res: any) => {
         this.confirmDialogRef.close()
         this.snackBar.open(res.message, '', {

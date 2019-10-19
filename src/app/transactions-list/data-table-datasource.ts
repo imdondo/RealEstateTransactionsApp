@@ -1,4 +1,4 @@
-import { TransactionsService } from './../services/transactions.service';
+import { TransactionService } from './../services/transactions.service';
 import { TransactionModel } from './../models/transaction.model';
 import { DataSource } from '@angular/cdk/collections';
 import { Observable, BehaviorSubject, of } from 'rxjs';
@@ -15,7 +15,7 @@ export class DataTableDataSource extends DataSource<TransactionModel> {
     private noTransactionsSource = new BehaviorSubject<boolean>(false)
     public noTransactions$ = this.noTransactionsSource.asObservable();
 
-    constructor(protected TransactionsService: TransactionsService) {
+    constructor(protected TransactionsService: TransactionService) {
         super();
     }
     connect(): Observable<TransactionModel[]> {
@@ -30,7 +30,7 @@ export class DataTableDataSource extends DataSource<TransactionModel> {
 
     loadTransactions() {
         this.isLoadingSource.next(true);
-        this.TransactionsService.getBeneficiaries().pipe(
+        this.TransactionsService.gettransactions().pipe(
             catchError(() => of([])),
             finalize(() => this.isLoadingSource.next(false))
 )

@@ -1,4 +1,4 @@
-import { TransactionsService } from './../services/transactions.service';
+import { TransactionService } from './../services/transactions.service';
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
@@ -12,7 +12,7 @@ export class TransactionFormComponent implements OnInit {
   transactionForm: FormGroup;
   constructor(
     private fb: FormBuilder,
-    private TransactionsService: TransactionsService,
+    private TransactionsService: TransactionService,
     private snackBar: MatSnackBar,
     public formDialogRef: MatDialogRef<TransactionFormComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
