@@ -14,7 +14,7 @@ import { DataTableDataSource } from './data-table-datasource';
   styleUrls: ['./transactions-list.component.scss']
 })
 export class TransactionsListComponent implements OnInit {
-  displayedColumns: string[] = ['street', 'city', 'state', 'edit', 'delete'];
+  displayedColumns: string[] = ['street', 'city', 'state', 'sale_date', 'price', 'edit', 'delete'];
   data: DataTableDataSource;
   transactionInput = new TransactionInputModel();
 

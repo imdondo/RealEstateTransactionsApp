@@ -1,7 +1,7 @@
 import { TransactionService } from './../services/transactions.service';
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar, throwToolbarMixedModesError } from '@angular/material';
 
 @Component({
   selector: 'app-transaction-form',
@@ -23,7 +23,9 @@ export class TransactionFormComponent implements OnInit {
     this.transactionForm.setValue({
       street: this.data.street,
       city: this.data.city,
-      state: this.data.state
+      state: this.data.state,
+      sale_date: this.data.sale_date,
+      price: this.data.price
     })
   }
 
@@ -32,6 +34,8 @@ export class TransactionFormComponent implements OnInit {
       street: ['', Validators.required],
       city: ['', Validators.required],
       state: ['', Validators.required],
+      sale_date: ['', Validators.required],
+      price: ['', Validators.required],
     })
   }
 

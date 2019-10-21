@@ -3,4 +3,6 @@ export interface TransactionModel {
     street: string;
     city: string;
     state: string;
+    sale_date:Date;
+    price:number;
 }
