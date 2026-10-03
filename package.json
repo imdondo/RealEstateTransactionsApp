@@ -20,7 +20,7 @@
     "@angular/material": "^7.3.5",
     "@angular/platform-browser": "~21.2.23",
     "@angular/platform-browser-dynamic": "~21.2.23",
-    "@angular/router": "~21.2.23",
+    "@angular/router": "~21.2.24",
     "core-js": "^2.5.4",
     "hammerjs": "^2.0.8",
     "rxjs": "~6.3.3",
